@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import appoitmentsRouter from './appoitments.routes';
+import appointmentsRouter from './appointments.routes';
 
 const routes = Router();
 
@@ -8,6 +8,6 @@ const routes = Router();
  * Dessa forma ele só ve o caminho e passa para Appoitments
  * Com isso o appoitments fica resposável por olhar a verbo(post dele)
  */
-routes.use('/appoitments', appoitmentsRouter);
+routes.use('/appoitments', appointmentsRouter);
 
 export default routes;
