@@ -7,11 +7,11 @@ const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
 
 //SoC: Separetion of Concerns (Separação de preocupações);
-appointmentsRouter.get('/', (request, response)=> {
+appointmentsRouter.get('/', (request, response) => {
   const appointments = appointmentsRepository.all();
 
   return response.json(appointments);
-})
+});
 
 appointmentsRouter.post('/', (request, respose) => {
   const { provider, date } = request.body;
@@ -27,7 +27,11 @@ appointmentsRouter.post('/', (request, respose) => {
       .json({ message: 'This appointment is already booked' });
   }
 
-  const appointment = appointmentsRepository.create(provider, parseDate);
+  //const appointment = appointmentsRepository.create(provider, parseDate);
+  const appointment = appointmentsRepository.create({
+    provider,
+    date: parseDate,
+  });
 
   return respose.json(appointment);
 });
