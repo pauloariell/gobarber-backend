@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^3.6.0",
