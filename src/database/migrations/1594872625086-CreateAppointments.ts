@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 /**
  * Run migration
  * yarn typeorm migration:run (up) Para criar migration
- * yarn typeorm migration:reverte (drop) Para deletar migration
+ * yarn typeorm migration:revert (drop) Para deletar migration
  * yarn typeorm migration:show (list) Para exibir as migrations já executadas
  */
 
@@ -28,6 +28,7 @@ export class CreateAppointments1594872625086 implements MigrationInterface {
             type: 'varchar',
             isPrimary: true,
             generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'provider',
