@@ -8,7 +8,7 @@ class Appointment {
   @Column('varchar')
   provider: string;
 
-  @Column('time with time zone')
+  @Column('timestamp with time zone')
   date: Date;
 
   //Não é mais necessario gerar construtor, pois o Entity já gera o constructor
