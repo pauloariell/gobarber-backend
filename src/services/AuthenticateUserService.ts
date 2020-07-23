@@ -3,6 +3,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import User from '../models/User';
+import authConfig from '../config/auth';
 
 interface Request {
   email: string;
@@ -32,9 +33,11 @@ class AuthenticateUserService {
     /**
      * Pode ser usado o site MD5 hash para gerar um hash e utilziar como seed
      */
-    const token = sign({}, '758036deac216f4b843d19c0d628161c', {
+
+    const { secret, expiresIn } = authConfig.jwt;
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });
 
     return {
