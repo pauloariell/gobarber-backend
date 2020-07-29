@@ -1,8 +1,8 @@
 {
-  "name": "first-nodejs-project",
+  "name": "gobarber-backend",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/pauloariell/first-nodejs-project.git",
+  "repository": "https://github.com/pauloariell/gobarber-backend.git",
   "author": "pauloariell",
   "license": "MIT",
   "scripts": {
