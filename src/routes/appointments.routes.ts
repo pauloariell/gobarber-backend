@@ -13,8 +13,6 @@ appointmentsRouter.use(ensureAuthenticated);
 
 // SoC: Separetion of Concerns (Separação de preocupações);
 appointmentsRouter.get('/', async (request, response) => {
-  console.log(request.user);
-
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
   const appointments = await appointmentsRepository.find();
 
@@ -22,19 +20,15 @@ appointmentsRouter.get('/', async (request, response) => {
 });
 
 appointmentsRouter.post('/', async (request, respose) => {
-  try {
-    const { provider_id, date } = request.body;
-    const parseDate = parseISO(date);
+  const { provider_id, date } = request.body;
+  const parseDate = parseISO(date);
 
-    const createAppointmentService = new CreateAppointmentService();
-    const appointment = await createAppointmentService.execute({
-      provider_id,
-      date: parseDate,
-    });
-    return respose.json(appointment);
-  } catch (err) {
-    return respose.status(400).json({ error: err.message });
-  }
+  const createAppointmentService = new CreateAppointmentService();
+  const appointment = await createAppointmentService.execute({
+    provider_id,
+    date: parseDate,
+  });
+  return respose.json(appointment);
 });
 
 export default appointmentsRouter;
