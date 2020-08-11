@@ -5,10 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  JoinColumn
+  JoinColumn,
 } from 'typeorm';
 
 import User from './User';
+
 @Entity('appointments')
 class Appointment {
   @PrimaryGeneratedColumn('uuid')
@@ -17,7 +18,10 @@ class Appointment {
   @Column()
   provider_id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, {
+    cascade: true,
+    eager: true,
+  })
   @JoinColumn({ name: 'provider_id' })
   provider: User;
 
